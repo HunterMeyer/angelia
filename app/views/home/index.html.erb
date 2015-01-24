@@ -1,5 +1,11 @@
 <div>
-  <b>Your Location</b>
-  <div id='location'>
-  </div>
+  Input your Twitter handle
+  <%= form_for :search, url: search_path, remote: true do |f| %>
+    <%= f.text_field :handle, placeholder: '@hunnafresh', autofocus: true %>
+    <%= f.submit 'Submit' %>
+  <% end %>
 </div>
+<br>
+<div class='results'>
+</div>
+
