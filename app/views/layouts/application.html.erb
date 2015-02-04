@@ -8,7 +8,15 @@
 </head>
 <body>
 
-<%= yield %>
+  <div>
+    Input your Twitter handle
+    <%= form_for :search, url: search_path do |f| %>
+      <%= f.text_field :username, placeholder: '@hunnafresh', autofocus: true %>
+      <%= f.submit 'Submit' %>
+    <% end %>
+  </div>
+  <br>
+  <%= yield %>
 
 </body>
 </html>
