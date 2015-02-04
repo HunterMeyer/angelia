@@ -1,11 +1,17 @@
-<div>
-  Input your Twitter handle
-  <%= form_for :search, url: search_path, remote: true do |f| %>
-    <%= f.text_field :handle, placeholder: '@hunnafresh', autofocus: true %>
-    <%= f.submit 'Submit' %>
-  <% end %>
-</div>
-<br>
-<div class='results'>
+<div class='mentions' style='display: inline-block; vertical-align:top; width:30%; margin-left:10px; border: 1px solid #525252;'>
+  <% @mentions.each do |mention| %>
+    <div style='padding: 5px; margin-bottom: 5px;'><%= mention %></div>
+  <% end if @mentions.present? %>
 </div>
 
+<div class='names' style='display: inline-block; vertical-align:top; width:30%; margin-left:10px; border: 1px solid #525252;'>
+  <% @names.each do |name| %>
+    <div style='padding: 5px; margin-bottom: 5px;'><%= name %></div>
+  <% end if @names.present? %>
+</div>
+
+<div class='locations' style='display: inline-block; vertical-align:top; width:30%; margin: 0 10px 0 10px; border: 1px solid #525252;'>
+  <% @locations.each do |location| %>
+    <div style='padding: 5px; margin-bottom: 5px;'><%= location %></div>
+  <% end if @locations.present? %>
+</div>
