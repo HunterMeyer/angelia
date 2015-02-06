@@ -5,7 +5,7 @@ class Result
   end
 
   def empty(objects)
-    ["Sorry, no #{objects} found."]
+    "Sorry, no #{objects} found."
   end
 
   def mentions
@@ -17,7 +17,13 @@ class Result
   end
 
   def get_mentions
-    mentions.map { |m| m.text }.presence || empty('mentions')
+    mentions.map { |m| m.text }.presence #|| empty('mentions')
+  end
+
+  def get_sentiment
+    return empty('mentions') if !get_mentions
+    sentiments = get_mentions.map! { |tweet| Sentimentalizer.analyze(tweet).overall_probability }
+    (sentiments.inject { |sum, el| sum + el }.to_f / sentiments.size).round(2)
   end
 
   # def get_users
