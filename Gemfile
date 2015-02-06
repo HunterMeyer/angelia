@@ -10,6 +10,7 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 1.2'
 gem 'awesome_print'
 gem 'twitter'
+gem 'sentimentalizer'
 
 group :production do
   gem 'rails_12factor'
