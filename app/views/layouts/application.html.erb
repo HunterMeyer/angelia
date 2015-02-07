@@ -11,7 +11,7 @@
   <div>
     Input your Twitter handle
     <%= form_for :search, url: search_path do |f| %>
-      <%= f.text_field :username, placeholder: '@hunnafresh', autofocus: true %>
+      <%= f.text_field :query, placeholder: '@hunnafresh', autofocus: true %>
       <%= f.submit 'Submit' %>
     <% end %>
   </div>

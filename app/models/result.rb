@@ -1,7 +1,7 @@
 class Result
 
-  def initialize(username)
-    @username = username
+  def initialize(query)
+    @query = query
   end
 
   def empty(objects)
@@ -9,21 +9,22 @@ class Result
   end
 
   def mentions
-    @mentions ||= $twitter.search(@username)
+    @mentions ||= $twitter.search(@query, result_type: 'recent', lang: 'en')
   end
 
   def users
-    @users ||= mentions.map { |m| m.user }
+    @users ||= mentions.map! { |m| m.user }
   end
 
   def get_mentions
-    mentions.map { |m| m.text }.presence #|| empty('mentions')
+    mentions.take(50).map! { |m| m.text }.presence #|| empty('mentions')
   end
 
   def get_sentiment
     return empty('mentions') if !get_mentions
+    ap 'Analyzing sentiments...'
     sentiments = get_mentions.map! { |tweet| Sentimentalizer.analyze(tweet).overall_probability }
-    (sentiments.inject { |sum, el| sum + el }.to_f / sentiments.size).round(2)
+    (sentiments.inject { |sum, el| sum + el }.to_f / sentiments.size).round(2) * 100
   end
 
   # def get_users

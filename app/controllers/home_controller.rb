@@ -4,8 +4,8 @@ class HomeController < ApplicationController
   end
 
   def search
-    @sentiment   = Result.new(search_params[:username]).get_sentiment
-    # @results   = Result.new(search_params[:username])
+    @sentiment   = Result.new(search_params[:query]).get_sentiment
+    # @results   = Result.new(search_params[:query])
     # @mentions  = @results.get_mentions
     # @names     = @results.get_screen_names
     # @locations = @results.get_locations
@@ -15,7 +15,7 @@ class HomeController < ApplicationController
   private
 
   def search_params
-    params.require(:search).permit(:username)
+    params.require(:search).permit(:query)
   end
 
 end
