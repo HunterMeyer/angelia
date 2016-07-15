@@ -1,4 +1,7 @@
 $(document).ready(function() {
+  $('.twitter-handle-form').submit(function () {
+    $(this).children('button').html("<i class='fa fa-spin fa-circle-o-notch'></i>");
+  })
   // $.get("http://ipinfo.io", function (response) {
   //   $('#location').html('Latitude: ' + response.loc.split(',')[0] + ', Longitude: ' + response.loc.split(',')[1]);
   // }, 'jsonp');

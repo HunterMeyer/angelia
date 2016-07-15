@@ -10,9 +10,9 @@
 
   <div>
     Input your Twitter handle
-    <%= form_for :search, url: search_path do |f| %>
+    <%= form_for :search, url: search_path, html: { class: 'twitter-handle-form' } do |f| %>
       <%= f.text_field :query, placeholder: '@hunnafresh', autofocus: true %>
-      <%= f.submit 'Submit' %>
+      <%= button_tag 'Submit', type: 'submit' %>
     <% end %>
   </div>
   <br>
